@@ -1,0 +1,9 @@
+<resources>
+    <color name="navy">#062A55</color>
+    <color name="blue">#0D6EFD</color>
+    <color name="green">#16A05D</color>
+    <color name="bg">#F4F7FB</color>
+    <color name="text">#10233F</color>
+    <color name="muted">#6B7890</color>
+    <color name="white">#FFFFFF</color>
+</resources>

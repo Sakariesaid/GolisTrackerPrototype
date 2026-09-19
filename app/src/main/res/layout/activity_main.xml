@@ -1,0 +1,132 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Golis Tracker"
+            android:textColor="@color/navy"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="Read-only Business Account Monitor"
+            android:textColor="@color/muted"
+            android:textSize="14sp"
+            android:layout_marginTop="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:text="Current Balance"
+                android:textColor="@color/muted"
+                android:textSize="14sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/balanceText"
+                android:text="$0.00"
+                android:textColor="@color/navy"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:layout_marginTop="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/statusText"
+                android:text="Waiting for Golis SMS..."
+                android:textColor="@color/green"
+                android:textSize="13sp"
+                android:layout_marginTop="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_marginTop="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/todayIncome"
+                android:text="Today's income\n$0.00"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:padding="18dp"
+                android:background="@drawable/card"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/countText"
+                android:text="Transactions\n0"
+                android:textColor="@color/text"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:padding="18dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/card"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <TextView
+            android:text="Recent Transactions"
+            android:textColor="@color/navy"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="24dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/transactionsText"
+            android:text="No transactions yet.\n\nWhen a supported Golis/Sahal SMS arrives, the prototype will try to extract the amount, reference and balance."
+            android:textColor="@color/text"
+            android:textSize="15sp"
+            android:lineSpacingExtra="5dp"
+            android:padding="18dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/permissionButton"
+            android:text="Allow SMS Access"
+            android:layout_marginTop="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:text="READ-ONLY PROTOTYPE\nNo money transfers • No deposits • No withdrawals • No Sahal PIN"
+            android:textColor="@color/muted"
+            android:textSize="12sp"
+            android:gravity="center"
+            android:layout_marginTop="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</ScrollView>
