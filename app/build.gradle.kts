@@ -1,29 +1,34 @@
-plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-}
+name: Build Golis Tracker APK
 
-android {
-    namespace = "so.keynan.golistracker"
-    compileSdk = 36
+on:
+  workflow_dispatch:
+  push:
+    branches: [ "main" ]
 
-    defaultConfig {
-        applicationId = "so.keynan.golistracker"
-        minSdk = 26
-        targetSdk = 35
-        versionCode = 1
-        versionName = "0.1.0"
-    }
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-        }
-    }
-}
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
 
-dependencies {
-    implementation("androidx.core:core-ktx:1.17.0")
-    implementation("androidx.appcompat:appcompat:1.7.1")
-    implementation("com.google.android.material:material:1.13.0")
-}
+    - name: Set up JDK 17
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: "17"
+
+    - name: Set up Gradle 8.5
+      uses: gradle/actions/setup-gradle@v3
+      with:
+        gradle-version: "8.5"
+
+    - name: Build Debug APK
+      run: gradle assembleDebug
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: app-debug
+        path: app/build/outputs/apk/debug/app-debug.apk
