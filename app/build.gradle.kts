@@ -1,34 +1,40 @@
-name: Build Golis Tracker APK
+plugins {
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+}
 
-on:
-  workflow_dispatch:
-  push:
-    branches: [ "main" ]
+android {
+    namespace = "com.example.golistrackerprototype"
+    compileSdk = 34
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+    defaultConfig {
+        applicationId = "com.example.golistrackerprototype"
+        minSdk = 24
+        targetSdk = 34
+        versionCode = 1
+        versionName = "1.0"
+    }
 
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    buildTypes {
+        release {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+}
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v4
-      with:
-        distribution: temurin
-        java-version: "17"
-
-    - name: Set up Gradle 8.5
-      uses: gradle/actions/setup-gradle@v3
-      with:
-        gradle-version: "8.5"
-
-    - name: Build Debug APK
-      run: gradle assembleDebug
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: app-debug
-        path: app/build/outputs/apk/debug/app-debug.apk
+dependencies {
+    implementation("androidx.core:core-ktx:1.12.0")
+    implementation("androidx.appcompat:appcompat:1.6.1")
+    implementation("com.google.android.material:material:1.11.0")
+}
